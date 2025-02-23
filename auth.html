@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login and Register</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-image: url('pictures/3402393.jpg'); /* Replace with your image */
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            color: white;
+            text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.7);
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            color: #333;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            width: 400px;
+            text-align: center;
+            position: relative;
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        h1 span {
+            font-size: 3rem;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #6a11cb;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .form-group input:focus {
+            border-color: #6a11cb;
+            outline: none;
+        }
+
+        .form-group button {
+            width: 100%;
+            padding: 12px;
+            background-color: #6a11cb;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .form-group button:hover {
+            background-color: #4a0fa1;
+            transform: scale(1.05);
+        }
+
+        .switch-link {
+            margin-top: 20px;
+            color: #6a11cb;
+        }
+
+        .switch-link a {
+            color: #2575fc;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .switch-link a:hover {
+            color: #4a0fa1;
+        }
+
+        .welcome {
+            font-size: 1.2rem;
+            color: #2575fc;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1><span>👋</span> Welcome Back!</h1>
+        <h2 id="formTitle">Login</h2>
+        <p class="welcome">We're thrilled to have you here again. Log in to continue!</p>
+        <form id="authForm">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" placeholder="Enter your username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter your password" required>
+            </div>
+            <div class="form-group">
+                <button type="submit">Login</button>
+            </div>
+            <div class="switch-link">
+                <a href="#" id="switchToRegister">Don't have an account? Register here</a>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        const authForm = document.getElementById('authForm');
+        const formTitle = document.getElementById('formTitle');
+        const switchToRegister = document.getElementById('switchToRegister');
+        const welcomeText = document.querySelector('.welcome');
+        const welcomeEmoji = document.querySelector('h1 span');
+        let isLogin = true;
+
+        switchToRegister.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (isLogin) {
+                formTitle.textContent = 'Register';
+                authForm.querySelector('button').textContent = 'Register';
+                switchToRegister.textContent = 'Already have an account? Login here';
+                welcomeText.textContent = "Join us today and explore amazing features!";
+                welcomeEmoji.textContent = '🌟';
+                isLogin = false;
+            } else {
+                formTitle.textContent = 'Login';
+                authForm.querySelector('button').textContent = 'Login';
+                switchToRegister.textContent = "Don't have an account? Register here";
+                welcomeText.textContent = "We're thrilled to have you here again. Log in to continue!";
+                welcomeEmoji.textContent = '👋';
+                isLogin = true;
+            }
+        });
+
+        authForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const apiUrl = 'https://673e75790118dbfe860b5976.mockapi.io/users';
+
+            if (isLogin) {
+                try {
+                    const response = await fetch(apiUrl, { method: 'GET', headers: { 'Content-Type': 'application/json' } });
+                    const users = await response.json();
+                    const user = users.find(user => user.username === username && user.password === password);
+
+                    if (user) {
+                        alert('Login Successful!');
+                        localStorage.setItem('isLoggedIn', 'true');
+                        window.location.href = 'index.html';
+                    } else {
+                        alert('Invalid username or password');
+                    }
+                } catch (error) {
+                    alert('An error occurred while logging in.');
+                }
+            } else {
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ username, password })
+                    });
+
+                    if (response.ok) {
+                        alert('Registration Successful!');
+                        window.location.href = 'index.html';
+                    } else {
+                        alert('An error occurred while registering.');
+                    }
+                } catch (error) {
+                    alert('An error occurred while registering.');
+                }
+            }
+        });
+    </script>
+</body>
+</html>

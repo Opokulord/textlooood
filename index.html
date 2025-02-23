@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Vision Pro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="real.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tesseract.js/2.1.1/tesseract.min.js"></script>
+    
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Currency Vision Pro</title>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="real.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tesseract.js/2.1.1/tesseract.min.js"></script>
+        
+        
+    <script src="voiceRecognition.js"></script>
+    <script src="imageCapture.js"></script>
+    <script src="others.js"></script>
+    <link rel="stylesheet" href="imageR.css">
+  
+</head>
+<body>
+   <header>
+    <div class="logo-container">
+    <img class="logo" src="pictures/hd5.jpg" alt="Currency Vision Pro Logo">
+    </div>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <nav>
+    <ul>
+      <li>
+        <a href="#" onclick="showSection('home')" class="active">
+          <i class="fas fa-home"></i> Home
+        </a>
+      </li>
+      <li>
+        <a href="#" onclick="showSection('features')">
+          <i class="fas fa-star"></i> Features
+        </a>
+      </li>
+      <li>
+        <a href="#" onclick="showSection('converter')">
+          <i class="fas fa-exchange-alt"></i> Converter
+        </a>
+      </li>
+      <li>
+        <a href="#" onclick="showSection('about')">
+          <i class="fas fa-info-circle"></i> About
+        </a>
+      </li>
+      <li>
+        <a href="#" onclick="logout()">
+          <i class="fas fa-sign-out-alt"></i> Logout
+        </a>
+      </li>
+      <li>
+        <a href="#" onclick="toggleDarkMode()">
+          <i class="fas fa-moon"></i> Dark Mode
+        </a>
+      </li>
+    </ul>
+  </nav>
+</header>
+    
+    <div class="container">
+        <!-- Home section -->
+        <section id="home" class="section active">
+            <p>Experience the future of currency conversion with real-time rates, voice recognition, and camera input.</p>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">🔊</div>
+                    <h3>Voice Recognize</h3>
+                    <p>Convert currencies hands-free with our advanced voice recognition technology.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">📷</div>
+                    <h3>Camera OCR</h3>
+                    <p>Scan currency notes or text to instantly input amounts for conversion.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🌍</div>
+                    <h3>Global Coverage</h3>
+                    <p>Access exchange rates for over 170 currencies worldwide.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Real-time Updates</h3>
+                    <p>Get the latest exchange rates updated every minute.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">📈</div>
+                    <h3>Exchange Rate Trends</h3>
+                    <p>Analyze trends with historical data and make informed financial decisions.</p>
+                </div>
+            </div>
+            <h2>Our Achievements</h2>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>180+</h3>
+                    <p>Currencies Supported</p>
+                </div>
+                <div class="stat-item">
+                    <h3>50+</h3>
+                    <p>Cryptocurrencies Included</p>
+                </div>
+                <div class="stat-item">
+                    <h3>1M+</h3>
+                    <p>Users Worldwide</p>
+                </div>
+                <div class="stat-item">
+                    <h3>24/7</h3>
+                    <p>Customer Support</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Converter section -->
+        <section id="converter" class="section">
+            <div class="converter">
+                <h2>Currency Converter</h2>
+                <div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
+                    <select id="fromCurrency">
+                        <option value="USD">USD - US Dollar</option>
+                        <option value="EUR">EUR - Euro</option>
+                        <option value="GBP">GBP - British Pound</option>
+                        <option value="JPY">JPY - Japanese Yen</option>
+                        <option value="CAD">CAD - Canadian Dollar</option>
+                        <option value="AUD">AUD - Australian Dollar</option>
+                        <option value="CHF">CHF - Swiss Franc</option>
+                        <option value="CNY">CNY - Chinese Yuan</option>
+                        <option value="GHS">GHS - Ghanaian Cedi</option>
+                        <option value="NGN">NGN - Nigerian Naira</option>
+                        <option value="ZAR">ZAR - South African Rand</option>
+                        <option value="INR">INR - Indian Rupee</option>
+                        <option value="BRL">BRL - Brazilian Real</option>
+                        <option value="RUB">RUB - Russian Ruble</option>
+                        <option value="MXN">MXN - Mexican Peso</option>
+                        <option value="KRW">KRW - South Korean Won</option>
+                        <option value="SGD">SGD - Singapore Dollar</option>
+                        <option value="NZD">NZD - New Zealand Dollar</option>
+                        <option value="TRY">TRY - Turkish Lira</option>
+                        <option value="HKD">HKD - Hong Kong Dollar</option>
+                        <option value="SEK">SEK - Swedish Krona</option>
+                        <option value="NOK">NOK - Norwegian Krone</option>
+                        <option value="DKK">DKK - Danish Krone</option>
+                        <option value="PLN">PLN - Polish Złoty</option>
+                        <option value="THB">THB - Thai Baht</option>
+                        <option value="IDR">IDR - Indonesian Rupiah</option>
+                        <option value="PHP">PHP - Philippine Peso</option>
+                        <option value="MYR">MYR - Malaysian Ringgit</option>
+                        <option value="PKR">PKR - Pakistani Rupee</option>
+                        <option value="ILS">ILS - Israeli Shekel</option>
+                        <option value="AED">AED - UAE Dirham</option>
+                        <option value="SAR">SAR - Saudi Riyal</option>
+                        <option value="QAR">QAR - Qatari Riyal</option>
+                        <option value="KWD">KWD - Kuwaiti Dinar</option>
+                        <option value="DOGE">DOGE - Dogecoin</option>
+                        <option value="USDT">USDT - Tether</option>
+                        <option value="TRX">TRX - Tron</option>
+                        <option value="BSV">BSV - Bitcoin SV</option>
+                        <option value="ETC">ETC - Ethereum Classic</option>
+                        <option value="QTUM">QTUM - Qtum</option>
+                        <option value="VET">VET - VeChain</option>
+                        <option value="ZIL">ZIL - Zilliqa</option>
+                        <option value="WAVES">WAVES - Waves</option>
+                    </select>
+                    <select id="toCurrency">
+                        <option value="USD">USD - US Dollar</option>
+                        <option value="EUR">EUR - Euro</option>
+                        <option value="GBP">GBP - British Pound</option>
+                        <option value="JPY">JPY - Japanese Yen</option>
+                        <option value="CAD">CAD - Canadian Dollar</option>
+                        <option value="AUD">AUD - Australian Dollar</option>
+                        <option value="CHF">CHF - Swiss Franc</option>
+                        <option value="CNY">CNY - Chinese Yuan</option>
+                        <option value="GHS">GHS - Ghanaian Cedi</option>
+                        <option value="NGN">NGN - Nigerian Naira</option>
+                        <option value="ZAR">ZAR - South African Rand</option>
+                        <option value="INR">INR - Indian Rupee</option>
+                        <option value="BRL">BRL - Brazilian Real</option>
+                        <option value="RUB">RUB - Russian Ruble</option>
+                        <option value="MXN">MXN - Mexican Peso</option>
+                        <option value="KRW">KRW - South Korean Won</option>
+                        <option value="SGD">SGD - Singapore Dollar</option>
+                        <option value="NZD">NZD - New Zealand Dollar</option>
+                        <option value="TRY">TRY - Turkish Lira</option>
+                        <option value="HKD">HKD - Hong Kong Dollar</option>
+                        <option value="SEK">SEK - Swedish Krona</option>
+                        <option value="NOK">NOK - Norwegian Krone</option>
+                        <option value="DKK">DKK - Danish Krone</option>
+                        <option value="PLN">PLN - Polish Złoty</option>
+                        <option value="THB">THB - Thai Baht</option>
+                        <option value="IDR">IDR - Indonesian Rupiah</option>
+                        <option value="PHP">PHP - Philippine Peso</option>
+                        <option value="MYR">MYR - Malaysian Ringgit</option>
+                        <option value="PKR">PKR - Pakistani Rupee</option>
+                        <option value="ILS">ILS - Israeli Shekel</option>
+                        <option value="AED">AED - UAE Dirham</option>
+                        <option value="SAR">SAR - Saudi Riyal</option>
+                        <option value="QAR">QAR - Qatari Riyal</option>
+                        <option value="KWD">KWD - Kuwaiti Dinar</option>
+                        <option value="DOGE">DOGE - Dogecoin</option>
+                        <option value="USDT">USDT - Tether</option>
+                        <option value="TRX">TRX - Tron</option>
+                        <option value="BSV">BSV - Bitcoin SV</option>
+                        <option value="ETC">ETC - Ethereum Classic</option>
+                        <option value="QTUM">QTUM - Qtum</option>
+                        <option value="VET">VET - VeChain</option>
+                        <option value="ZIL">ZIL - Zilliqa</option>
+                        <option value="WAVES">WAVES - Waves</option>      
+                    </select>
+                </div>
+                <input type="number" id="amount" placeholder="Enter amount" />
+                <button id="convertButton">Convert</button>
+                <div class="result" id="result"></div>
+                <div class="trendResult" id="trendResult"></div>
+                <button class="voice-btn" onclick="startVoiceRecognition()">🎤 Voice Input</button>
+                <button class="capture-btn" onclick="captureCurrency()">📸 Capture Input</button>
+            </div>
+            <div style="margin-top: 20px;">
+                <canvas id="rateChart" width="400" height="200"></canvas>
+            </div> 
+                      
+        </section>
+
+        <!-- Features section -->
+        <section id="features" class="section">
+            <div class="features-container">
+                <div class="feature-item">
+                    <span>💱</span>
+                    <h3>Real-Time Currency Data</h3>
+                    <p>Access live rates for 180+ currencies and 50 cryptocurrencies, updated every minute.</p>
+                </div>
+                <div class="feature-item">
+                    <span>📊</span>
+                    <h3>Multi-Currency Calculator</h3>
+                    <p>Includes historical exchange rate data for smarter decision-making and comparisons.</p>
+                </div>
+                <div class="feature-item">
+                    <span>🎤</span>
+                    <h3>Voice Recognition</h3>
+                    <p>Convert currencies hands-free with advanced speech-to-text processing.</p>
+                </div>
+                <div class="feature-item">
+                    <span>🤖</span>
+                    <h3>AI-Powered Conversion</h3>
+                    <p>Leverages machine learning for predictive analytics and smart suggestions.</p>
+                </div>
+                <div class="feature-item">
+                    <span>📱</span>
+                    <h3>Responsive Design</h3>
+                    <p>Seamlessly switch between devices with a fully responsive layout and mobile apps.</p>
+                </div>
+                <div class="feature-item">
+                    <span>🔗</span>
+                    <h3>RESTful API</h3>
+                    <p>Integrate our powerful currency services into your own applications with ease.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- About section -->
+        <section id="about" class="section">
+            <div class="about-container">
+                <h2 class="about-title">About Us</h2>
+                <p class="about-description">
+                    Currency Vision Pro is revolutionizing how the world handles currency conversion. Our goal is to provide a seamless, intuitive, and efficient experience for individuals and businesses alike. With cutting-edge technology, we ensure accurate data and a user-friendly interface.
+                </p>
+                
+                <!-- New Features Section -->
+                <div class="about-features">
+                    <div class="about-feature-item">
+                        <div class="about-feature-icon">🚀</div>
+                        <h3>Our Mission</h3>
+                        <p>To simplify currency conversion for everyone, empowering users with the latest tools and technologies.</p>
+                    </div>
+                    <div class="about-feature-item">
+                        <div class="about-feature-icon">🌍</div>
+                        <h3>Global Presence</h3>
+                        <p>Our platform is trusted by millions worldwide, available in over 30 languages.</p>
+                    </div>
+                    <div class="about-feature-item">
+                        <div class="about-feature-icon">⚙️</div>
+                        <h3>Technological Excellence</h3>
+                        <p>We leverage AI, real-time APIs, and OCR technology to deliver unparalleled accuracy and performance.</p>
+                    </div>
+                </div>
+        
+                <h3 class="team-title">Meet Our Team</h3>
+                <div class="team">
+                    <div class="team-member">
+                        <img src="pictures/hd3.jpeg" alt="Opoku Emmanuel Kwadwo">
+                        <h3>Opoku Emmanuel Kwadwo</h3>
+                        <p>Lead Developer</p>
+                        <p>Opoku leads the development team and ensures that our platform runs smoothly and efficiently.</p>
+                    </div>
+                    <div class="team-member">
+                        <img src="pictures/hd.jpeg" alt="Hadassah Afi Koleki Ocquaye">
+                        <h3>Hadassah Afi Koleki Ocquaye</h3>
+                        <p>Frontend Developer</p>
+                        <p>Hadassah specializes in creating user-friendly interfaces and enhancing user experience.</p>
+                    </div>
+                    <div class="team-member">
+                        <img src="pictures/hd2.jpeg" alt="Gideon Mensah Marfo">
+                        <h3>Gideon Mensah Marfo</h3>
+                        <p>Backend Developer</p>
+                        <p>Gideon focuses on server-side logic and database management to ensure data integrity.</p>
+                    </div>
+                </div>
+            </div>
+        </section> 
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Currency Vision Pro. All rights reserved.</p>
+        <p><a href="#" style="color: white; text-decoration: underline;">Privacy Policy</a> | <a href="#" style="color: white; text-decoration: underline;">Terms of Service</a></p>
+    </footer>
+    <script src="animationDropdown.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="currencyAPI.js"></script>
+</body>
+</html>
